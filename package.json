@@ -11,7 +11,7 @@
     "@radix-ui/react-collapsible": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@radix-ui/react-visually-hidden": "^1.2.3",
-    "equal-ds-ui": "^0.0.4",
+    "equal-ds-ui": "^0.0.6",
     "lucide-react": "^0.441.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"

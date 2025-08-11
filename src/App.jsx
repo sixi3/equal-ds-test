@@ -41,6 +41,15 @@ import {
 
 export default function App() {
   const [selected, setSelected] = useState('consent-templates');
+  
+  // State for managing group order
+  const [groupOrder, setGroupOrder] = useState([
+    'aa-ecosystem',
+    'bulk-operations', 
+    'analytics',
+    'admin-setup',
+    'reference-docs'
+  ]);
 
   return (
     <div className="h-screen flex">
@@ -56,9 +65,13 @@ export default function App() {
               <ArrowLeftCircle className="h-5 w-5" />
             </SidebarTrigger>
           </SidebarHeader>
-          <SidebarContent>
+          <SidebarContent 
+            reorderGroups={true}
+            groupOrder={groupOrder}
+            onGroupOrderChange={setGroupOrder}
+          >
             {/* AA ECOSYSTEM */}
-            <SidebarGroup defaultOpen>
+            <SidebarGroup id="aa-ecosystem" defaultOpen>
               <SidebarGroupTrigger>
                 <SidebarGroupLabel>AA ECOSYSTEM</SidebarGroupLabel>
               </SidebarGroupTrigger>
@@ -90,7 +103,7 @@ export default function App() {
             </SidebarGroup>
 
             {/* BULK OPERATIONS */}
-            <SidebarGroup defaultOpen>
+            <SidebarGroup id="bulk-operations" defaultOpen>
               <SidebarGroupTrigger>
                 <SidebarGroupLabel>BULK OPERATIONS</SidebarGroupLabel>
               </SidebarGroupTrigger>
@@ -113,7 +126,7 @@ export default function App() {
             </SidebarGroup>
 
             {/* ANALYTICS */}
-            <SidebarGroup defaultOpen>
+            <SidebarGroup id="analytics" defaultOpen>
               <SidebarGroupTrigger>
                 <SidebarGroupLabel>ANALYTICS</SidebarGroupLabel>
               </SidebarGroupTrigger>
@@ -133,7 +146,7 @@ export default function App() {
             </SidebarGroup>
 
             {/* ADMIN & SETUP */}
-            <SidebarGroup defaultOpen>
+            <SidebarGroup id="admin-setup" defaultOpen>
               <SidebarGroupTrigger>
                 <SidebarGroupLabel>ADMIN & SETUP</SidebarGroupLabel>
               </SidebarGroupTrigger>
@@ -153,7 +166,7 @@ export default function App() {
             </SidebarGroup>
 
             {/* REFERENCE & DOCS */}
-            <SidebarGroup defaultOpen>
+            <SidebarGroup id="reference-docs" defaultOpen>
               <SidebarGroupTrigger>
                 <SidebarGroupLabel>REFERENCE & DOCS</SidebarGroupLabel>
               </SidebarGroupTrigger>
@@ -179,6 +192,9 @@ export default function App() {
             <ArrowLeftCircle className="h-5 w-5" />
           </SidebarTrigger>
           <div>Selected: {selected}</div>
+          <div className="text-sm text-gray-600">
+            Group Order: {groupOrder.join(' → ')}
+          </div>
         </div>
       </SidebarProvider>
     </div>
